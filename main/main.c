@@ -6,7 +6,16 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:50 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/18 00:47:51 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:36:12 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../incld/philosophers.h"
+
+int		main(int ac, char **av)
+{
+	ac++;
+	av[ac] = NULL;
+	// printf("hvihvcoi;vh %s\n", av[ac]);
+	return (0);
+}
