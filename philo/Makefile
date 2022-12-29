@@ -6,7 +6,7 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/19 12:37:37 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/29 12:21:35 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CC 				= gcc -Wall -Wextra -Werror -g3
 OBJ				= $(SRCS:.c=.o)
 
 SRCS 			= main/main.c \
+					srcs/inits.c srcs/libft.c srcs/parsing.c \
 
 SRCH_INCLDS 	= -Iincld
 
