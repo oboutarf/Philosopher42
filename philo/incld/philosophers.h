@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/29 16:38:25 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:30:41 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ void	ft_putchar(char c);
 int     check_num(char **str, int nb);
 // @ ------------------------- #Routine --------------------------- @ //
 void    *philo_life(void *general);
+// @ --------------------------- #Free ---------------------------- @ //
+void	free_forks(t_gen *general);
+void    set_free(t_gen *general);
+// @ -------------------------- #Print ---------------------------- @ //
+void    print_state_after_init(t_gen *general);
+
 
 #endif

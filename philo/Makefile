@@ -6,18 +6,23 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/29 16:16:48 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/29 23:30:00 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= philo
 
-CC 				= gcc -pthread -g3
+CC 				= gcc -Wall -Wextra -Werror -pthread -g3
 
 OBJ				= $(SRCS:.c=.o)
 
 SRCS 			= main/main.c \
-					srcs/inits.c srcs/libft.c srcs/parsing.c srcs/routine.c \
+					srcs/free.c \
+				  	srcs/libft.c \
+					srcs/parsing.c \
+					srcs/inits.c \
+					srcs/routine.c \
+					srcs/print.c \
 
 SRCH_INCLDS 	= -Iincld
 
@@ -41,3 +46,4 @@ fclean:     clean
 			$(RM) $(NAME)
 
 re:         fclean $(NAME)
+

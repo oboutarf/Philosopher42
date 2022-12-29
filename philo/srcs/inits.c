@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:48:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/29 16:45:45 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:33:35 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void	init_philos(t_gen *general)
 		general->philo[i].rfork = i + 2;
 		if (i + 2 > general->n_philo)
 			general->philo[i].rfork = 1;
+		pthread_create(&(general->philo[i].thread), NULL, &philo_life, &(general->philo[i]));
 		general->philo[i].general = general;
-		general->philo[i].thread = pthread_create(&(general->philo[i].thread), NULL,
-			&philo_life, &(general->philo[i]));
 	}
 }
 
@@ -35,6 +34,9 @@ void	init_mutex(t_gen *general)
 	int		i;
 
 	i = -1;
+	general->forks = malloc(sizeof(pthread_mutex_t) * general->n_philo);
+	if (!general->forks)
+		return ;
 	while (++i < general->n_philo)
 		pthread_mutex_init(&(general->forks[i]), NULL);
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 12:17:51 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/29 23:31:28 by oboutarf         ###   ########.fr       */
+/*   Created: 2022/12/29 23:27:31 by oboutarf          #+#    #+#             */
+/*   Updated: 2022/12/29 23:29:30 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int		main(int ac, char **av)
+void    print_state_after_init(t_gen *general)
 {
-	t_gen	*general;
+    int     i;
 
-	if ((ac != 5 && ac != 6) || check_num(av, ac))
-		return (ft_putstr(WRONG_INPUT), 1);
-	general = init_simulation(av);
-	// print_state_after_init(general);
-	set_free(general);
-	return (0);
+    i = -1;
+    while (++i < general->n_philo)
+        printf("id: %d   lfork = %d  rfork = %d         %ld\n", general->philo[i].id, 
+                general->philo[i].lfork, general->philo[i].rfork, general->philo[i].thread);
+    
 }

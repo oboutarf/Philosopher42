@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:04:08 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/29 16:13:34 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:19:56 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void    *philo_life(void *general)
 {
     (void)general;
+    return (NULL);
 }
