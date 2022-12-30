@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   message.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 23:27:31 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/30 15:27:22 by oboutarf         ###   ########.fr       */
+/*   Created: 2022/12/31 00:11:09 by oboutarf          #+#    #+#             */
+/*   Updated: 2022/12/31 00:25:00 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void    print_state_after_init(t_gen *general)
+void    forks_messages(t_philo *philo, char *message)
 {
-    int     i;
+    ft_putstr(ft_itoa(philo->id));
+    ft_putstr(message);
+}
 
-    i = -1;
-    while (++i < general->n_philo)
-        printf("id: %d   lfork = %d  rfork = %d         %ld\n", general->philo[i].id, 
-                general->philo[i].lfork, general->philo[i].rfork, general->philo[i].thread);
-    
+void    eat_messages(t_philo *philo, char *message)
+{
+    ft_putstr(ft_itoa(philo->id));
+    ft_putstr(message);
 }

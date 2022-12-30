@@ -6,7 +6,7 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/29 23:30:00 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/31 00:16:28 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,14 @@ OBJ				= $(SRCS:.c=.o)
 
 SRCS 			= main/main.c \
 					srcs/free.c \
+					srcs/time.c \
+					srcs/dead.c \
 				  	srcs/libft.c \
-					srcs/parsing.c \
 					srcs/inits.c \
-					srcs/routine.c \
 					srcs/print.c \
+					srcs/parsing.c \
+					srcs/routine.c \
+					srcs/message.c \
 
 SRCH_INCLDS 	= -Iincld
 

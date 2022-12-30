@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 23:27:31 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/30 15:27:22 by oboutarf         ###   ########.fr       */
+/*   Created: 2022/12/30 14:31:23 by oboutarf          #+#    #+#             */
+/*   Updated: 2022/12/30 15:37:40 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void    print_state_after_init(t_gen *general)
+long long	time_stamp(long long start_time, long long actual_time)
 {
-    int     i;
+	return (actual_time - start_time);
+}
 
-    i = -1;
-    while (++i < general->n_philo)
-        printf("id: %d   lfork = %d  rfork = %d         %ld\n", general->philo[i].id, 
-                general->philo[i].lfork, general->philo[i].rfork, general->philo[i].thread);
-    
+long long 	current_time(void)
+{
+	long long 		current_time;
+	struct timeval 			tv;
+
+	gettimeofday(&tv, NULL);
+	current_time = tv.tv_sec * 1000 + (tv.tv_usec / 1000);
+	return (current_time);
 }
