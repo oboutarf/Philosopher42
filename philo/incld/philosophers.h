@@ -6,12 +6,12 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 00:25:20 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:27:59 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-# define PHILOPSOPHERS_H
+# define PHILOSOPHERS_H
 # define WRONG_INPUT "Wrong arguments!\n"
 // @ ----------------------- #Includes --------------------------- @ //
 #include <sys/time.h>
@@ -22,8 +22,7 @@
 // @ ------------------------ #Structs --------------------------- @ //
 typedef struct 	s_philo
 {
-	long long			time_since_tt_e;
-	int					death_timer;
+	long long			last_eat;
 	int					id;
 	int					lfork;
 	int					rfork;
@@ -35,7 +34,7 @@ typedef struct 	s_philo
 typedef struct	s_gen
 {
 	long long			start_process_time;
-	int					n_philo_eat;
+	int					number_philo_eat;
 	int					is_dead;
 	int					n_philo;
 	int					tt_d;
@@ -46,6 +45,7 @@ typedef struct	s_gen
     t_philo				*philo;
 }						t_gen;
 // @ --------------------------- #Time ---------------------------- @ //
+long long	time_stamp(long long start_time, long long actual_time);
 long long 	 current_time(void);
 // @ -------------------------- #Init ----------------------------- @ //
 t_gen	*init_simulation(char **av);
@@ -55,11 +55,13 @@ void	init_philos(t_gen *general);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
 int     ft_atoi(char *str);
-char	*ft_itoa(int n);
-int		ft_nbrlen(int n);
+void	ft_putnbr(int n);
 // @ ------------------------- #Parsing --------------------------- @ //
 int     check_num(char **str, int nb);
 // @ ------------------------- #Routine --------------------------- @ //
+void	take_forks(t_philo *philo, t_gen *general);
+void	sleeping(t_philo *philo, t_gen *general);
+void	eating(t_philo *philo, t_gen *general);
 void	launch_simulation(t_gen *general);
 void    *philo_life(void *p);
 // @ --------------------------- #Free ---------------------------- @ //
@@ -71,7 +73,10 @@ void    print_state_after_init(t_gen *general);
 // @ --------------------------- #Dead ---------------------------- @ //
 void	dead_check(t_gen *general);
 // @ ------------------------- #message --------------------------- @ //
+void	thinking_message(t_philo *philo, char *message);
 void    forks_messages(t_philo *philo, char *message);
+void	sleep_messages(t_philo *philo, char *message);
+void	death_message(t_philo *philo, char *message);
 void    eat_messages(t_philo *philo, char *message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:17:51 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/30 23:51:59 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:51:25 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(int ac, char **av)
 	if ((ac != 5 && ac != 6) || check_num(av, ac))
 		return (ft_putstr(WRONG_INPUT), 1);
 	general = init_simulation(av);
+	// print_state_after_init(general);
 	launch_simulation(general);
 	set_free(general);
 	return (0);
