@@ -6,7 +6,7 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/31 00:16:28 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/31 16:19:32 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS 			= main/main.c \
 					srcs/parsing.c \
 					srcs/routine.c \
 					srcs/message.c \
+					srcs/actions.c \
 
 SRCH_INCLDS 	= -Iincld
 

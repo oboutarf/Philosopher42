@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 15:27:59 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 16:35:16 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct	s_gen
 }						t_gen;
 // @ --------------------------- #Time ---------------------------- @ //
 long long	time_stamp(long long start_time, long long actual_time);
-long long 	 current_time(void);
+long long 	current_time(void);
 // @ -------------------------- #Init ----------------------------- @ //
 t_gen	*init_simulation(char **av);
 void	*init_mutex(t_gen *general);
@@ -59,11 +59,14 @@ void	ft_putnbr(int n);
 // @ ------------------------- #Parsing --------------------------- @ //
 int     check_num(char **str, int nb);
 // @ ------------------------- #Routine --------------------------- @ //
-void	take_forks(t_philo *philo, t_gen *general);
-void	sleeping(t_philo *philo, t_gen *general);
-void	eating(t_philo *philo, t_gen *general);
+int		is_dead(t_gen *general);
 void	launch_simulation(t_gen *general);
 void    *philo_life(void *p);
+// @ ------------------------- #Actions --------------------------- @ //
+void	take_forks(t_philo *philo, t_gen *general);
+void	sleeping(t_philo *philo, t_gen *general);
+void	thinking(t_philo *philo, t_gen *general);
+void	eating(t_philo *philo, t_gen *general);
 // @ --------------------------- #Free ---------------------------- @ //
 void	join_threads(t_gen *general);
 void	free_forks(t_gen *general);

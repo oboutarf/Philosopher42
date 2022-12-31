@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:48:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 15:11:29 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 18:03:48 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_philos(t_gen *general)
 
 	i = -1;
 	general->is_dead = 0;
-	general->start_process_time = current_time();
 	while (++i < general->n_philo)
 	{
 		general->philo[i].id = i + 1;
@@ -61,6 +60,7 @@ t_gen	*init_simulation(char **av)
 		return (NULL);
 	if (av[5])
 		general->number_philo_eat = ft_atoi(av[5]);
+	general->is_dead = 0;
 	init_mutex(general);
 	init_philos(general);
 	return (general);
