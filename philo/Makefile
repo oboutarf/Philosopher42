@@ -6,13 +6,13 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/31 16:19:32 by oboutarf         ###   ########.fr        #
+#    Updated: 2023/01/01 00:27:49 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= philo
 
-CC 				= gcc -Wall -Wextra -Werror -pthread -g3
+CC 				= fsantize=address gcc -Wall -Wextra -Werror -pthread -g3
 
 OBJ				= $(SRCS:.c=.o)
 

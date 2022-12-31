@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 21:18:32 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 00:33:29 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct	s_gen
 	int					number_philo_eat;
 	int					is_dead;
 	int					n_philo;
-	int					died;
 	int					tt_d;
 	int					tt_e;
 	int					tt_s;
@@ -75,13 +74,13 @@ void    set_free(t_gen *general);
 // @ -------------------------- #Print ---------------------------- @ //
 void    print_state_after_init(t_gen *general);
 // @ --------------------------- #Dead ---------------------------- @ //
-int		is_dead(t_philo *philo, t_gen *general);
+int		check_death_in_actions(t_gen *general);
 void	dead_check(t_gen *general);
 // @ ------------------------- #message --------------------------- @ //
-void	death_message(t_philo *philo, t_gen *general, char *message);
 void	thinking_message(t_philo *philo, char *message);
 void    forks_messages(t_philo *philo, char *message);
 void	sleep_messages(t_philo *philo, char *message);
+void	death_message(t_philo *philo, char *message);
 void    eat_messages(t_philo *philo, char *message);
 
 #endif
