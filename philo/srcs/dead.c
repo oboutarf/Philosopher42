@@ -6,32 +6,43 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 22:19:03 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 18:26:08 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:23:46 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+int		is_dead(t_philo *philo, t_gen *general)
+{
+	if (philo->general->is_dead == 1)
+	{
+		if (general->died == 1)
+			return (1);
+		return (1);
+	}
+	return (0);
+}
+
 void	dead_check(t_gen *general)
 {
+	t_philo		*philo;
 	int			i;
 
-	while (1)
+	philo = general->philo;
+	while (general->is_dead != 1)
 	{
 		i = -1;
 		while (++i < general->n_philo)
 		{
-			printf("LOOP\n");
-			if ((general->start_process_time - general->philo[i].last_eat) > general->tt_d)
+			if ((current_time() - philo[i].last_eat) > general->tt_d)
 			{
-				death_message(general->philo, " is dead\n");
+				pthread_mutex_lock(&(general->write));
+				death_message(philo, general, " is dead\n");
 				general->is_dead = 1;
+				pthread_mutex_unlock(&(general->write));
 				break ;
 			}
+			++i;
 		}
-		if (general->is_dead == 1)
-			break ;
 	}
-	printf("END-LOOP\n");
-	
 }

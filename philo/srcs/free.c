@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 21:20:41 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/30 23:59:21 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:18:40 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	destroy_forks(t_gen *general)
 	while (++i < general->n_philo)
 		pthread_mutex_destroy(&(general->forks[i]));
 	pthread_mutex_destroy(&(general->write));
+	pthread_mutex_destroy(&(general->check));
 }
 
 void	join_threads(t_gen *general)

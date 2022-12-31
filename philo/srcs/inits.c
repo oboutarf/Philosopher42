@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:48:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 18:03:48 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:17:46 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	*init_mutex(t_gen *general)
 	while (++i < general->n_philo)
 		pthread_mutex_init(&(general->forks[i]), NULL);
 	pthread_mutex_init(&(general->write), NULL);
+	pthread_mutex_init(&(general->check), NULL);
 	return (NULL);
 }
 

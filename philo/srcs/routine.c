@@ -6,19 +6,11 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:04:08 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 18:25:40 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:15:00 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-int		is_dead(t_gen *general)
-{
-	if (general->is_dead == 1)
-		return (1);
-	else
-		return (0);
-}
 
 void    *philo_life(void *p)
 {
@@ -27,9 +19,11 @@ void    *philo_life(void *p)
 
 	philo = (t_philo *)p;
 	general = (t_gen *)philo->general;
-	if (philo->id % 2)
-		usleep(((general->tt_d - (general->tt_e + general->tt_s)) / 2) * 1000);
-	while (is_dead(general) == 0)
+	general->died = 0;
+	philo->last_eat = general->start_process_time;
+	// if (philo->id % 2 == 0)
+	// 	usleep(general->tt_e * 1000);
+	while (is_dead(philo, general) == 0)
 	{
 		take_forks(philo, general);
 		eating(philo, general);
