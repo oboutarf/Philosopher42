@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:48:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 17:30:17 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 21:36:05 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	init_philos(t_gen *general)
 		general->philo[i].n_tt_e = 0;
 		general->philo[i].lfork = i;
 		general->philo[i].rfork = i + 1;
+		general->philo[i].sleep = 0;
+		general->philo[i].think = 0;
+		general->philo[i].fork_stamp = 0;
 		if (i + 1 == general->n_philo)
 			general->philo[i].rfork = 0;
 		general->philo[i].general = general;
@@ -41,7 +44,7 @@ void	*init_mutex(t_gen *general)
 	while (++i < general->n_philo)
 		pthread_mutex_init(&(general->forks[i]), NULL);
 	pthread_mutex_init(&(general->write), NULL);
-	pthread_mutex_init(&(general->check), NULL);
+	pthread_mutex_init(&(general->check_death), NULL);
 	pthread_mutex_init(&(general->check_meal), NULL);
 	return (NULL);
 }

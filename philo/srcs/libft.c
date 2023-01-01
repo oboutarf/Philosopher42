@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:57:14 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/31 14:59:35 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 20:17:07 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	int		i;
+
+	i = write(1, &c, 1);
+	(void)i;
 }
 
 void	ft_putstr(char *str)

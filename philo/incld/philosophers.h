@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 18:29:06 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 23:12:29 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
 // @ ------------------------ #Structs --------------------------- @ //
 typedef struct 	s_philo
 {
+	long long			fork_stamp;
 	long long			last_eat;
+	long long			sleep;
+	long long			think;
 	int					id;
 	int					lfork;
 	int					rfork;
@@ -41,7 +44,7 @@ typedef struct	s_gen
 	int					tt_e;
 	int					tt_s;
 	pthread_mutex_t		write;
-	pthread_mutex_t		check;
+	pthread_mutex_t		check_death;
 	pthread_mutex_t		check_meal;
 	pthread_mutex_t		*forks;
     t_philo				*philo;
@@ -79,11 +82,8 @@ void    print_state_after_init(t_gen *general);
 // @ --------------------------- #Dead ---------------------------- @ //
 void	dead_check(t_gen *general);
 int		is_dead(t_philo *philo);
-// @ ------------------------- #message --------------------------- @ //
-void	thinking_message(t_philo *philo, char *message);
-void    forks_messages(t_philo *philo, char *message);
-void	sleep_messages(t_philo *philo, char *message);
+// @ ------------------------- #Message --------------------------- @ //
+void	actions_logs(t_philo *philo, char *message);
 void	death_message(t_philo *philo, char *message);
-void    eat_messages(t_philo *philo, char *message);
 
 #endif

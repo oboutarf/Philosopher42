@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:04:08 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 18:42:11 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 23:49:02 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    *philo_life(void *p)
 
 	philo = (t_philo *)p;
 	general = (t_gen *)philo->general;
+	if (philo-> id % 2 == 0)
+		ft_usleep(5);
 	while (!is_dead(philo))
 	{
 		take_forks(philo, general);
