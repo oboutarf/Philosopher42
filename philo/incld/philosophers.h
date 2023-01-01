@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 00:47:55 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 00:33:29 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:29:06 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,15 @@ typedef struct	s_gen
 	int					tt_s;
 	pthread_mutex_t		write;
 	pthread_mutex_t		check;
+	pthread_mutex_t		check_meal;
 	pthread_mutex_t		*forks;
     t_philo				*philo;
 }						t_gen;
 // @ --------------------------- #Time ---------------------------- @ //
 long long	time_stamp(long long start_time, long long actual_time);
 long long 	current_time(void);
+void		ft_usleep(int ms);
+// int		ft_usleep(long int duration, t_philo *philo);
 // @ -------------------------- #Init ----------------------------- @ //
 t_gen	*init_simulation(char **av);
 void	*init_mutex(t_gen *general);
@@ -63,10 +66,10 @@ int     check_num(char **str, int nb);
 void	launch_simulation(t_gen *general);
 void    *philo_life(void *p);
 // @ ------------------------- #Actions --------------------------- @ //
-void	*take_forks(t_philo *philo, t_gen *general);
-void	*sleeping(t_philo *philo, t_gen *general);
-void	*thinking(t_philo *philo, t_gen *general);
-void	*eating(t_philo *philo, t_gen *general);
+void	take_forks(t_philo *philo, t_gen *general);
+void	sleeping(t_philo *philo, t_gen *general);
+void	thinking(t_philo *philo, t_gen *general);
+void	eating(t_philo *philo, t_gen *general);
 // @ --------------------------- #Free ---------------------------- @ //
 void	join_threads(t_gen *general);
 void	free_forks(t_gen *general);
@@ -74,8 +77,8 @@ void    set_free(t_gen *general);
 // @ -------------------------- #Print ---------------------------- @ //
 void    print_state_after_init(t_gen *general);
 // @ --------------------------- #Dead ---------------------------- @ //
-int		check_death_in_actions(t_gen *general);
 void	dead_check(t_gen *general);
+int		is_dead(t_philo *philo);
 // @ ------------------------- #message --------------------------- @ //
 void	thinking_message(t_philo *philo, char *message);
 void    forks_messages(t_philo *philo, char *message);
