@@ -6,13 +6,13 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 00:47:46 by oboutarf          #+#    #+#              #
-#    Updated: 2023/01/02 03:32:52 by oboutarf         ###   ########.fr        #
+#    Updated: 2023/01/02 03:54:11 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= philo
 
-CC 				= gcc -pthread -Wall -Wextra -Werror -fsanitize=thread -g3
+CC 				= gcc -pthread -Wall -Wextra -Werror -g3
 
 OBJ				= $(SRCS:.c=.o)
 

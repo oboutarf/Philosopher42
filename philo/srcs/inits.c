@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 00:48:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/02 02:52:42 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:13:09 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_philos(t_gen *general)
 	{
 		general->philo[i].id = i + 1;
 		general->philo[i].lfork = i;
+		general->philo[i].last_eat = 0;
 		general->philo[i].rfork = i + 1;
 		general->philo[i].n_tt_e = general->number_philo_eat;
 		if (i + 1 == general->n_philo)
@@ -63,6 +64,7 @@ t_gen	*init_simulation(char **av)
 	general->tt_d = ft_atoi(av[2]);
 	general->tt_e = ft_atoi(av[3]);
 	general->tt_s = ft_atoi(av[4]);
+	general->round_of_table = 0;
 	general->philo = malloc(sizeof(t_philo) * general->n_philo);
 	if (!general->philo)
 		return (NULL);

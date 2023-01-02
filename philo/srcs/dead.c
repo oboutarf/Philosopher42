@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 22:19:03 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/02 03:26:30 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:10:54 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	dead_check(t_gen *general)
 	t_philo		*philo;
 	int			i;
 
-	philo = general->philo;
 	i = -1;
+	philo = general->philo;
 	while (++i < general->n_philo)
 	{
 		pthread_mutex_lock(&(general->check_meal[i]));
-		if ((current_time() - philo[i].last_eat) > (long)general->tt_d)
+		if ((current_time() - philo[i].last_eat) > general->tt_d)
 		{
 			pthread_mutex_unlock(&(general->check_meal[i]));
 			pthread_mutex_lock(&(general->check_death));

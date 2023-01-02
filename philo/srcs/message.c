@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 00:11:09 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/02 03:29:57 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:56:55 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	actions_logs(t_philo *philo, char *message)
 				current_time()));
 	if (is_dead(philo))
 		return ;
+	pthread_mutex_lock(&(philo->general->write));
 	printf("%lld\t%d%s", timestamp, philo->id, message);
+	pthread_mutex_unlock(&(philo->general->write));
 }
