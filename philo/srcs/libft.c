@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 11:57:14 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 20:17:07 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:28:40 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_putnbr(int n)
 	}
 }
 
-int     ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int		nb;
 	int		i;
@@ -56,4 +56,3 @@ int     ft_atoi(char *str)
 	}
 	return (nb);
 }
-

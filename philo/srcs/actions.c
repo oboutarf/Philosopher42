@@ -6,51 +6,61 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 16:21:06 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 22:19:33 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:27:10 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void thinking(t_philo *philo, t_gen *general)
+void	thinking(t_philo *philo, t_gen *general)
 {
-	pthread_mutex_lock(&(general->write));
 	actions_logs(philo, " is thinking\n");
-	pthread_mutex_unlock(&(general->write));
+	(void)general;
 }
 
-void sleeping(t_philo *philo, t_gen *general)
+void	sleeping(t_philo *philo, t_gen *general)
 {
-	pthread_mutex_lock(&(general->write));
 	actions_logs(philo, " is sleeping\n");
-	pthread_mutex_unlock(&(general->write));
 	ft_usleep(philo->general->tt_s);
+	(void)general;
 }
 
-void take_forks(t_philo *philo, t_gen *general)
+void	take_forks(t_philo *philo, t_gen *general)
 {
-	pthread_mutex_lock(&(philo->general->forks[philo->lfork]));
-	pthread_mutex_lock(&(general->write));
-	philo->fork_stamp = current_time();
+	if (philo->id == general->n_philo)
+		pthread_mutex_lock(&(philo->general->forks[philo->rfork]));
+	else
+		pthread_mutex_lock(&(philo->general->forks[philo->lfork]));
 	actions_logs(philo, " has taken a fork\n");
-	pthread_mutex_unlock(&(general->write));
-	pthread_mutex_lock(&(philo->general->forks[philo->rfork]));
-	pthread_mutex_lock(&(general->write));
-	philo->fork_stamp = current_time();
+	if (philo->id == general->n_philo)
+		pthread_mutex_lock(&(philo->general->forks[philo->lfork]));
+	else
+		pthread_mutex_lock(&(philo->general->forks[philo->rfork]));
 	actions_logs(philo, " has taken a fork\n");
-	pthread_mutex_unlock(&(general->write));
 }
 
-void eating(t_philo *philo, t_gen *general)
+void	eating(t_philo *philo, t_gen *general)
 {
-	pthread_mutex_lock(&(general->check_meal));
+	pthread_mutex_lock(&(general->check_meal[philo->id - 1]));
 	philo->last_eat = current_time();
-	(philo->n_tt_e)++;
-	pthread_mutex_unlock(&(general->check_meal));
-	pthread_mutex_lock(&(general->write));	
+	pthread_mutex_unlock(&(general->check_meal[philo->id - 1]));
 	actions_logs(philo, " is eating\n");
-	pthread_mutex_unlock(&(general->write));
 	ft_usleep(philo->general->tt_e);
-	pthread_mutex_unlock(&(philo->general->forks[philo->rfork]));
-	pthread_mutex_unlock(&(philo->general->forks[philo->lfork]));
+	if (philo->id == general->n_philo)
+	{
+		pthread_mutex_unlock(&(philo->general->forks[philo->rfork]));
+		pthread_mutex_unlock(&(philo->general->forks[philo->lfork]));
+	}
+	else
+	{
+		pthread_mutex_unlock(&(philo->general->forks[philo->lfork]));
+		pthread_mutex_unlock(&(philo->general->forks[philo->rfork]));
+	}
+	(philo->n_tt_e)--;
+	if (philo->n_tt_e == 0)
+	{
+		pthread_mutex_lock(&(general->check_rot));
+		(general->round_of_table)++;
+		pthread_mutex_unlock(&(general->check_rot));
+	}
 }

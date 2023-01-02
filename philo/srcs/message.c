@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 00:11:09 by oboutarf          #+#    #+#             */
-/*   Updated: 2023/01/01 23:18:43 by oboutarf         ###   ########.fr       */
+/*   Updated: 2023/01/02 03:29:57 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	death_message(t_philo *philo, char *message)
 {
-	ft_putnbr(time_stamp(philo->general->start_process_time, current_time()));
-	ft_putchar('\t');
-	ft_putnbr(philo->id);
-	ft_putstr(message);
+	long long	timestamp;
+
+	timestamp = (time_stamp(philo->general->start_process_time,
+				current_time()));
+	printf("%lld\t%d%s", timestamp, philo->id, message);
 }
 
 void	actions_logs(t_philo *philo, char *message)
 {
+	long long	timestamp;
+
+	timestamp = (time_stamp(philo->general->start_process_time,
+				current_time()));
 	if (is_dead(philo))
 		return ;
-	ft_putnbr(time_stamp(philo->general->start_process_time, current_time()));
-	ft_putchar('\t');
-	ft_putnbr(philo->id);
-	ft_putstr(message);
+	printf("%lld\t%d%s", timestamp, philo->id, message);
 }
